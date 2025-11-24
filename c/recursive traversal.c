@@ -1,0 +1,31 @@
+#include <stdio.h> [cite: 917]
+#include <stdlib.h> [cite: 918]
+
+typedef struct Node { [cite: 919]
+    int val; [cite: 920]
+    struct Node *l, *r; [cite: 921]
+} Node; [cite: 922]
+
+Node* newNode(int v) { [cite: 923]
+    Node* n = (Node*)malloc(sizeof(Node)); [cite: 924]
+    n->val=v; [cite: 925]
+    n->l=n->r=NULL; [cite: 925]
+    return n; [cite: 926]
+} [cite: 927]
+
+void pre(Node* r){ if(!r) return; printf("%d ",r->val); pre(r->l); pre(r->r); } [cite: 928]
+void in(Node* r){ if(!r) return; in(r->l); printf("%d ",r->val); in(r->r); } [cite: 928]
+void post(Node* r){ if(!r) return; post(r->l); post(r->r); printf("%d ",r->val); } [cite: 929]
+
+int main(){ [cite: 930]
+    Node *root = newNode(1); [cite: 931]
+    root->l = newNode(2); [cite: 932]
+    root->r = newNode(3); [cite: 932]
+    root->l->l = newNode(4); [cite: 933]
+    root->l->r = newNode(5); [cite: 933]
+
+    printf("Pre: "); pre(root); printf("\n"); [cite: 935]
+    printf("In: "); in (root); printf("\n"); [cite: 935]
+    printf("Post: "); post(root); printf("\n"); [cite: 935]
+    return 0; [cite: 935]
+} [cite: 934]
